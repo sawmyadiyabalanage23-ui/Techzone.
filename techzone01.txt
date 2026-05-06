@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechZone | Ultimate Gadget Store</title>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #0f172a;
+      --light: #f1f5f9;
+      --accent: #ef4444;
+      --success: #22c55e;
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      margin: 0;
+      background: var(--light);
+      color: var(--dark);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background: var(--dark);
+      color: white;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    nav .logo span { color: var(--primary); }
+
+    .logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.logo span {
+  background: linear-gradient(45deg, #2563eb, #22c55e);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo:hover {
+  text-shadow: 0 0 10px rgba(37, 99, 235, 0.8);
+  transition: 0.3s;
+}
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .search-bar {
+      flex: 1;
+      max-width: 300px;
+      display: flex;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    .cart-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(135deg,#1e293b,#0f172a);
+      color: white;
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .offer-banner {
+      background: var(--accent);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .category-section {
+      margin-bottom: 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .product-card:hover { transform: translateY(-5px); }
+
+    .img-container {
+      height: 180px;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-container img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+    }
+
+    .info { padding: 15px; }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 8px 0;
+    }
+
+    .availability { font-size: 0.85rem; margin-bottom: 10px; }
+    .in-stock { color: var(--success); }
+    .limited { color: #f59e0b; }
+
+    .buy-btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      text-align: center;
+      padding: 30px;
+    }
+
+    /* search highlight */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">TECH<span>ZONE</span></div>
+
+  <ul>
+    <li><a href="#smartphones">Smartphones</a></li>
+    <li><a href="#laptops">Laptops</a></li>
+    <li><a href="#audio and headphones">Audio and Headphones</a></li>
+    <li><a href="#smartwatches">Smartwatches</a></li>
+    <li><a href="gaming accessories">Gamingaccessories</a></li>
+  </ul>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()" />
+  </div>
+
+  <button class="cart-btn">🛒 Cart (0)</button>
+</nav>
+
+<header class="hero">
+  <div class="offer-banner">NEW DEALS AVAILABLE</div>
+  <h1>TechZone - Future Gadgets</h1>
+  <p>Premium Devices | Fast Delivery | Best Prices</p>
+</header>
+
+<div class="container">
+
+     <section class="ad-banner">
+    <h2>🔥 New Arrivals - Up to 25% OFF</h2>
+    <p>Limited time discount on latest gadgets. Don’t miss out!</p>
+    <button>Shop Now</button>
+  </section>
+
+<div class="container">
+
+  <section id="smartphones" class="category-section">
+    <h2>Smartphones</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://otc.lk/wp-content/uploads/2026/04/Infinix-Hot-60-Pro-8GB-256GB-Smartphone-by-OTC.lk-in-Sri-Lanka-1-300x300.jpg" /></div>
+        <div class="info">
+          <h3>Horizone 15 Pro</h3>
+          <p>A17 Pro chip, Titanium body, pro camera system.</p>
+          <div class="price">Rs.215,000</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+<section id="gaming-accessories" class="category-section">
+    <h2>Gamingaccessories</h2>
+    <div class="grid product-grid">
+
+       <div class="product-card">
+        <div class="img-container"><img src="https://i.ebayimg.com/images/g/cU0AAOSwHjdn~2Bu/s-l400.jpg" /></div>
+        <div class="info">
+          <h3>LUNA Aurora R16</h3>
+          <p>High-end gaming desktop with Intel i9 and RTX 4090 performance.</p>
+          <div class="price"></div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="laptops" class="category-section">
+    <h2>Laptops</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" /></div>
+        <div class="info">
+          <h3>NanoBook Pro M3</h3>
+          <p>High performance for creators and developers.</p>
+          <div class="price">Rs.250,000</div><div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      </div>
+  </section>
+
+  <section id="smartphones" class="category-section">
+    <h2>Smartphones</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://image.made-in-china.com/202f0j00OHReJTCKrZot/6-56-Inches-Cell-Phone-Android-12-Mobile-Phone-Uniwa-X19s-4G-Android-Global-Version-Smartphone.webp" /></div>
+        <div class="info">
+          <h3>LUNA M Pro</h3>
+          <p>A17 Pro chip, Titanium body, pro camera system.</p>
+          <div class="price">Rs.120,000</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://microless.com/cdn/products/47bad65e335fde8be0d241a6cef8d64e-md.jpg" /></div>
+        <div class="info">
+          <h3>Winner Ultra</h3>
+          <p>200MP camera, AI features, long battery life.</p>
+          <div class="price">Rs.66,990</div>
+          <div class="availability limited">Limited Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://xmobile.lk/wp-content/uploads/2026/05/1-4-1024x1024.png" /></div>
+        <div class="info">
+          <h3>Horizone INFINITY Pro</h3>
+          <p>AI-powered photography and clean Android experience.</p>
+          <div class="price">Rs.56,999</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="laptops" class="category-section">
+    <h2>Laptops</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://m.media-amazon.com/images/I/51vUvsHTm1L.jpg" /></div>
+        <div class="info">
+          <h3>NanoBook Pro M3</h3>
+          <p>High performance for creators and developers.</p>
+          <div class="price">Rs.190,000</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://i5.walmartimages.com/asr/0cf536af-9f30-4003-bc5e-f979aa50c1fa.48d2b99e84fdf84e1ebcc4b17a51f2f4.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" /></div>
+        <div class="info">
+          <h3>Winner G5 ultra</h3>
+          <p>Powerful gaming laptop with RTX GPU.</p>
+          <div class="price">Rs.250,000</div>
+          <div class="availability limited">Out of Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTonM6qmgsxy9RI4JUNhH84I6aX8AmKj7RWPQ&s" /></div>
+        <div class="info">
+          <h3>LUNA flipbook 15</h3>
+          <p>Premium productivity ultrabook.</p>
+          <div class="price">Rs.210,000</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<section id="audio-headphones" class="category-section">
+    <h2>Audio & Headphones</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90" /></div>
+        <div class="info">
+          <h3>ECHO WH-1000XM5</h3>
+          <p>Industry-leading noise cancelling headphones with premium sound.</p>
+          <div class="price">Rs.2,500</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://content.abt.com/image.php/5b70b39077d6acfef44a678960bcf78a?image=/images/products/BDP_Images/apple-airpods-pro3-MFHP4LL-A.jpg&ck=1&width=750&height=550&canvas" /></div>
+        <div class="info">
+          <h3>AirPods BASS 2X</h3>
+
+          <p>Active noise cancellation with spatial audio experience.</p>
+          <div class="price">Rs.2,499</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>   </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://lifemobile.lk/wp-content/uploads/2024/03/blue-3.jpg" /></div>
+        <div class="info">
+          <h3>JBL Tune 760</h3>
+          <p>Wireless over-ear headphones with deep bass and ANC.</p>
+          <div class="price">Rs.10,000</div>
+          <div class="availability limited">Limited Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="smartwatches" class="category-section">
+    <h2>Smartwatches / Wearables</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTod2Qf6XofB6UD96naa3QFIawXfPn8bwBRZA&s" /></div>
+        <div class="info">
+          <h3>LUNA Watch Series 9</h3>
+          <p>Advanced health tracking, ECG, and fitness features.</p>
+          <div class="price">Rs.14,000</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://cdn.thewirecutter.com/wp-content/media/2025/10/BEST-SMARTWATCH-ANDROID-PHONES-04013.jpg?width=2048&quality=60&crop=2048:1365&auto=webp" /></div>
+        <div class="info">
+          <h3>Horizone Watch 6</h3><p>Wear OS smartwatch with fitness and health tracking.</p>
+          <div class="price">Rs.16,799</div>
+          <div class="availability limited">Limited Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://www.transtekcorp.com/uploads/image/20211103/10/bluetooth-heart-rate-monitor-smart-watch-transtek-detail-3.jpg" /></div>
+        <div class="info">
+          <h3>Fitness Charge Pro</h3>
+          <p>Advanced fitness tracker with sleep and heart monitoring.</p>
+          <div class="price">Rs.20,999</div>
+          <div class="availability in-stock">Out of Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+   
+  <section id="gaming-accessories" class="category-section">
+    <h2>Gaming Accessories</h2>
+    <div class="grid product-grid">
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMABgOKl2MqBCZn3TnUvEcexdvd0PTV4wqnQ&s" /></div>
+        <div class="info">
+          <h3>Blizzar BlackCat V4</h3>
+          <p>Mechanical gaming keyboard with RGB lighting and fast response switches.</p>
+          <div class="price">Rs.21,000</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://img.drz.lazcdn.com/static/lk/p/b6d73876288513f9d35c329630740c30.jpg_720x720q80.jpg" /></div>
+        <div class="info"> <h3>Loghtech G X Superlight</h3>
+          <p>Ultra-light wireless gaming mouse built for esports performance.</p>
+          <div class="price">Rs.9,000</div>
+          <div class="availability limited">Limited Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="img-container"><img src="https://gadgetasia.lk/wp-content/uploads/2024/07/monster-rgb-gaming-headset-best-price-gadget-asia-lk-sri-lanka.webp" /></div>
+        <div class="info">
+          <h3>Gamer Arctis Nova 7</h3>
+          <p>Wireless gaming headset with immersive 3D audio and long battery life.</p>
+          <div class="price">Rs.17,500</div>
+          <div class="availability in-stock">In Stock</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2024 TechZone Gadget Store. All Rights Reserved.</p>
+</footer>
+
+<script>
+function searchProducts() {
+  let input = document.getElementById('searchInput').value.toLowerCase();
+  let products = document.querySelectorAll('.product-card');
+
+  products.forEach(product => {
+    let text = product.innerText.toLowerCase();
+    if (text.includes(input)) {
+      product.classList.remove('hidden');
+    } else {
+      product.classList.add('hidden');
+    }
+  });
+}
+</script>
+
+</body>
+</html>
